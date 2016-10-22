@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Employee -->
+       <record id="hr_employee_payroll_jp1" model="hr.employee">
+            <field eval="0" name="manager"/>
+            <field eval="100" name="time_efficiency"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="1" name="active"/>
+            <field name="name">木村拓哉</field>
+            <field name="resource_type">user</field>
+            <field name="work_location">製造部</field>
+            <field name="work_phone">+818282350</field>            
+      </record>
+      <record id="hr_employee_payroll_jp2" model="hr.employee">
+            <field eval="0" name="manager"/>
+            <field eval="100" name="time_efficiency"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="1" name="active"/>
+            <field name="name">武井咲</field>
+            <field name="resource_type">user</field>
+            <field name="work_location">総務部</field>
+            <field name="work_phone">+816482375</field>            
+      </record>
+    <!-- Employee Contract -->   
+        <record id="hr_payroll_salary_structure_mfg" model="hr.contract">
+            <field name="name">製造部部員</field>
+            <field name="struct_id" ref="hr_payroll_salary_structure_employee"/>
+            <field name="employee_id" ref="hr_employee_payroll_jp1"/>
+            <field name="notes">Default contract for mfg engineer(Japanese payroll demo)</field>
+            <field eval="285000" name="wage"/>
+            <field eval="38400" name="overtime_allowance"/>            
+            <field eval="65100" name="commuting_allowance"/> 
+            <field eval="38000" name="health_insurance"/>
+            <field eval="6004" name="nursing_insurance"/>  
+            <field eval="69092" name="employees_pension"/>  
+            <field eval="1554" name="unemployment_insurance_employee"/> 
+            <field eval="2720" name="unemployment_insurance_employer"/> 
+            <field eval="1650" name="workmens_compensation_insurance"/> 
+            <field eval="2220" name="income_tax"/> 
+            <field eval="4800" name="resident_tax"/> 
+        </record>  
+    
+       <record id="hr_payroll_salary_structure_adm" model="hr.contract">
+            <field name="name">総務部部員</field>
+            <field name="struct_id" ref="hr_payroll_salary_structure_employee"/>
+            <field name="employee_id" ref="hr_employee_payroll_jp2"/>
+            <field name="notes">Default contract for administration clerk(Japanese payroll demo)</field>
+            <field eval="225000" name="wage"/>
+            <field eval="17000" name="overtime_allowance"/>            
+            <field eval="12500" name="commuting_allowance"/> 
+            <field eval="38000" name="health_insurance"/>
+            <field eval="0" name="nursing_insurance"/>  
+            <field eval="69092" name="employees_pension"/>  
+            <field eval="1018" name="unemployment_insurance_employee"/> 
+            <field eval="1782" name="unemployment_insurance_employer"/> 
+            <field eval="1080" name="workmens_compensation_insurance"/> 
+            <field eval="4340" name="income_tax"/> 
+            <field eval="9383" name="resident_tax"/> 
+        </record>
+   -->     
+   <!-- Res partner --> 
+        <record id="res_partner_sio" model="res.partner">
+            <field name="street">神奈川県相模原市南区相模大野６−６−６５４ </field>
+            <field name="city">相模原市</field>
+            <field name="zip">252-0001</field>
+            <field name="country_id" ref="base.jp"/>
+            <field name="email">sio@yourcompany.example.com</field>
+        </record>
+        <record id="res_partner_hw" model="res.partner">
+            <field name="street">相模原市中央区富士見　１ー３ー５</field>
+            <field name="city">相模原市</field>
+            <field name="zip">252-0003</field>
+            <field name="country_id" ref="base.jp"/>
+            <field name="email">hellowork@yourcompany.example.com</field>
+        </record>
+        <record id="res_partner_lsso" model="res.partner">
+            <field name="street">神奈川県相模原市中央区富士見６丁目１−１０ </field>
+            <field name="city">相模原市</field>
+            <field name="zip">252-0136</field>
+            <field name="country_id" ref="base.jp"/>
+            <field name="email">lsso@yourcompany.example.com</field>
+        </record>
+        <record id="res_partner_to" model="res.partner">
+            <field name="street">相模原市中央区富士見　１ー３ー８</field>
+            <field name="city">相模原市</field>
+            <field name="zip">252-0137</field>
+            <field name="country_id" ref="base.jp"/>
+            <field name="email">tax@yourcompany.example.com</field>
+        </record>
+        <record id="res_partner_co" model="res.partner">
+            <field name="street">相模原市中央区富士見　１ー３ー１５</field>
+            <field name="city">相模原市</field>
+            <field name="zip">252-0141</field>
+            <field name="country_id" ref="base.jp"/>
+            <field name="email">city@yourcompany.example.com</field>
+        </record>
+</odoo>

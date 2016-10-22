@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="hr_contract_form_l10n_jp_inherit" model="ir.ui.view">
+            <field name="name">hr.contract.form.inherit</field>
+            <field name="model">hr.contract</field>
+            <field name="priority">20</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+            <field name="arch" type="xml">
+            <data>
+                 <xpath expr="//field[@name='struct_id']" position="after">
+                    <field name="overtime_allowance"/>
+                    <field name="commuting_allowance"/>  
+                    <field name="health_insurance"/>
+                    <field name="nursing_insurance"/>  
+                    <field name="employees_pension"/>
+                    <field name="unemployment_insurance_employee"/>
+                    <field name="unemployment_insurance_employer"/>
+                    <field name="workmens_compensation_insurance"/>
+                    <field name="income_tax"/> 
+                    <field name="resident_tax"/>                      
+                 </xpath>
+            </data>
+            </field>
+        </record>       
+</odoo>

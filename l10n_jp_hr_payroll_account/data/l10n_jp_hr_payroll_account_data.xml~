@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- HR SALARY RULES-->
+    <record id="l10n_jp_hr_payroll.hr_payroll_rules_employee" model="hr.salary.rule">
+        <field name="account_debit" search="[('code', 'like', 'B500710%')]"/>
+    </record>
+    <record id="l10n_jp_hr_payroll.hr_payroll_rules_employee" model="hr.salary.rule">
+        <field name="account_credit" search="[('code', 'like', 'A111021%')]"/>
+    </record>
+    <record id="l10n_jp_hr_payroll.hr_payroll_rules_ota" model="hr.salary.rule">
+        <field name="account_debit" search="[('code', 'like', 'B500710%')]"/>
+    </record>
+    <record id="l10n_jp_hr_payroll.hr_payroll_rules_ota" model="hr.salary.rule">
+        <field name="account_credit" search="[('code', 'like', 'A111021%')]"/>
+    </record>
+    <record id="l10n_jp_hr_payroll.hr_payroll_rules_ca" model="hr.salary.rule">
+        <field name="account_debit" search="[('code', 'like', 'B501610%')]"/>
+    </record>
+    <record id="l10n_jp_hr_payroll.hr_payroll_rules_ca" model="hr.salary.rule">
+        <field name="account_credit" search="[('code', 'like', 'A111021%')]"/>
+    </record>  
+    <record id="l10n_jp_hr_payroll.hr_payroll_rules_ca" model="hr.salary.rule">
+        <field name="account_tax_id" search="[('name', 'like', '仮払消費税(外)')]"/>
+    </record>    
+    <record id="l10n_jp_hr_payroll.hr_payroll_rules_hi_emp" model="hr.salary.rule">
+        <field name="account_credit" search="[('code', 'like', 'A111021%')]"/>
+    </record>
+    <record id="l10n_jp_hr_payroll.hr_payroll_rules_hi_emp" model="hr.salary.rule">
+        <field name="account_debit" search="[('code', 'like', 'A218030%')]"/>
+    </record>
+    <record id="l10n_jp_hr_payroll.hr_payroll_rules_ni_emp" model="hr.salary.rule">
+        <field name="account_debit" search="[('code', 'like', 'A111021%')]"/>
+    </record>
+    <record id="l10n_jp_hr_payroll.hr_payroll_rules_ni_emp" model="hr.salary.rule">
+        <field name="account_credit" search="[('code', 'like', 'A218030%')]"/>
+    </record>
+    <record id="l10n_jp_hr_payroll.hr_payroll_rules_ep_emp" model="hr.salary.rule">
+        <field name="account_credit" search="[('code', 'like', 'A111021%')]"/>
+    </record>
+    <record id="l10n_jp_hr_payroll.hr_payroll_rules_ep_emp" model="hr.salary.rule">
+        <field name="account_debit" search="[('code', 'like', 'A218030%')]"/>
+    </record>
+    <record id="l10n_jp_hr_payroll.hr_payroll_rules_ui_emp" model="hr.salary.rule">
+        <field name="account_credit" search="[('code', 'like', 'A111021%')]"/>
+    </record>
+    <record id="l10n_jp_hr_payroll.hr_payroll_rules_ui_emp" model="hr.salary.rule">
+        <field name="account_debit" search="[('code', 'like', 'A218030%')]"/>
+    </record>
+    <record id="l10n_jp_hr_payroll.hr_payroll_rules_itax" model="hr.salary.rule">
+        <field name="account_credit" search="[('code', 'like', 'A111021%')]"/>
+    </record>
+    <record id="l10n_jp_hr_payroll.hr_payroll_rules_itax" model="hr.salary.rule">
+        <field name="account_debit" search="[('code', 'like', 'A218030%')]"/>
+    </record>
+    <record id="l10n_jp_hr_payroll.hr_payroll_rules_rtax" model="hr.salary.rule">
+        <field name="account_credit" search="[('code', 'like', 'A111021%')]"/>
+    </record>
+    <record id="l10n_jp_hr_payroll.hr_payroll_rules_rtax" model="hr.salary.rule">
+        <field name="account_debit" search="[('code', 'like', 'A218030%')]"/>
+    </record>
+    <record id="l10n_jp_hr_payroll.hr_payroll_rules_ded" model="hr.salary.rule">
+        <field name="account_credit" search="[('code', 'like', 'A111021%')]"/>
+    </record>
+    <record id="l10n_jp_hr_payroll.hr_payroll_rules_ded" model="hr.salary.rule">
+        <field name="account_debit" search="[('code', 'like', 'A218030%')]"/>
+    </record>
+</odoo>

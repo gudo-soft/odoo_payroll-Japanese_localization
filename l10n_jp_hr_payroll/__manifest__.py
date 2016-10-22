@@ -1,0 +1,28 @@
+# -*- coding:utf-8 -*-
+# Part of Odoo. See LICENSE file for full copyright and licensing details.
+
+{
+    'name': 'Japanese - Payroll',
+    'category': 'Localization',
+    'depends': ['hr_payroll'],
+    'description': """
+Japanese Payroll Rules.
+=======================
+
+    * Employee Details
+    * Employee Contracts
+    * Allowances/Deductions
+    * Allow to configure Basic/Gross/Net Salary
+    * Employee Payslip
+    * Monthly Payroll Register
+    * Salary , Insuarance, Withholding Tax,  ...
+    """,
+
+    'demo': ['data/l10n_jp_hr_payroll_demo.xml'],
+    'author': 'gudo_soft',
+    'website': 'http://gudo-soft.world.coocan.jp',
+    'data':[
+        'views/l10n_jp_hr_payroll_view.xml',
+        'data/l10n_jp_hr_payroll_data.xml',
+    ],
+}

@@ -1,0 +1,72 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* l10n_jp_hr_payroll
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0-20161008\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-10-21 12:13+0000\n"
+"PO-Revision-Date: 2016-10-21 12:13+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_jp_hr_payroll
+#: model:ir.model.fields,field_description:l10n_jp_hr_payroll.field_hr_contract_commuting_allowance
+msgid "Commuting allowance"
+msgstr ""
+
+#. module: l10n_jp_hr_payroll
+#: model:ir.model,name:l10n_jp_hr_payroll.model_hr_contract
+msgid "Employee Contract"
+msgstr ""
+
+#. module: l10n_jp_hr_payroll
+#: model:ir.model.fields,field_description:l10n_jp_hr_payroll.field_hr_contract_employees_pension
+msgid "Employee's pension"
+msgstr ""
+
+#. module: l10n_jp_hr_payroll
+#: model:ir.model.fields,field_description:l10n_jp_hr_payroll.field_hr_contract_health_insurance
+msgid "Health insurance"
+msgstr ""
+
+#. module: l10n_jp_hr_payroll
+#: model:ir.model.fields,field_description:l10n_jp_hr_payroll.field_hr_contract_income_tax
+msgid "Income tax"
+msgstr ""
+
+#. module: l10n_jp_hr_payroll
+#: model:ir.model.fields,field_description:l10n_jp_hr_payroll.field_hr_contract_nursing_insurance
+msgid "Nursing insurance"
+msgstr ""
+
+#. module: l10n_jp_hr_payroll
+#: model:ir.model.fields,field_description:l10n_jp_hr_payroll.field_hr_contract_overtime_allowance
+msgid "Overtime allowance"
+msgstr ""
+
+#. module: l10n_jp_hr_payroll
+#: model:ir.model.fields,field_description:l10n_jp_hr_payroll.field_hr_contract_resident_tax
+msgid "Resident tax"
+msgstr ""
+
+#. module: l10n_jp_hr_payroll
+#: model:ir.model.fields,field_description:l10n_jp_hr_payroll.field_hr_contract_unemployment_insurance_employee
+msgid "Unemployment insurance(Employee's share)"
+msgstr ""
+
+#. module: l10n_jp_hr_payroll
+#: model:ir.model.fields,field_description:l10n_jp_hr_payroll.field_hr_contract_unemployment_insurance_employer
+msgid "Unemployment insurance(Employer's share"
+msgstr ""
+
+#. module: l10n_jp_hr_payroll
+#: model:ir.model.fields,field_description:l10n_jp_hr_payroll.field_hr_contract_workmens_compensation_insurance
+msgid "Workmen's compensation insurance"
+msgstr ""
+

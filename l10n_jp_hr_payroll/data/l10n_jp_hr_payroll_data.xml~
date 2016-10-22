@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- CONTRIBUTION REGISTERS -->
+    <record id="res_partner_sio" model="res.partner">
+        <field name="name"> 社会福祉事務所</field>
+        <field name="supplier">1</field>
+        <field eval="0" name="customer"/>
+    </record>
+    <record id="contrib_register_sio_h" model="hr.contribution.register">
+        <field name="name">健康保険料（会社負担分）</field>
+        <field name="note"></field>
+        <field name="partner_id" ref="res_partner_sio"/>
+    </record>
+    <record id="contrib_register_sio_n" model="hr.contribution.register">
+        <field name="name">介護保険料（会社負担分）</field>
+        <field name="note"></field>
+        <field name="partner_id" ref="res_partner_sio"/>
+    </record>
+    <record id="contrib_register_sio_e" model="hr.contribution.register">
+        <field name="name">厚生年金保険料（会社負担分）</field>
+        <field name="note"></field>
+        <field name="partner_id" ref="res_partner_sio"/>
+    </record>
+    <record id="res_partner_hw" model="res.partner">
+        <field name="name">ハローワーク</field>
+        <field name="supplier">1</field>
+        <field eval="0" name="customer"/>
+    </record>
+    <record id="contrib_register_hw" model="hr.contribution.register">
+        <field name="name">雇用保険料（会社負担分）</field>
+        <field name="partner_id" ref="res_partner_hw"/>
+    </record>
+    <record id="res_partner_lsso" model="res.partner">
+        <field name="name">労働基準監督署</field>
+        <field name="supplier">1</field>
+        <field eval="0" name="customer"/>
+    </record>
+    <record id="contrib_register_lsso" model="hr.contribution.register">
+        <field name="name">労災保険料</field>
+        <field name="partner_id" ref="res_partner_lsso"/>
+    </record>
+    <record id="res_partner_to" model="res.partner">
+        <field name="name">税務署</field>
+        <field name="supplier">1</field>
+        <field eval="0" name="customer"/>
+    </record>
+    <record id="res_partner_co" model="res.partner">
+        <field name="name">市役所</field>
+        <field name="supplier">1</field>
+        <field eval="0" name="customer"/>
+    </record>
+
+<!-- HR SALARY RULE CATEGORIES--> 
+    <record id="hr_payroll_head_salary" model="hr.salary.rule.category">
+        <field name="name">Basic</field>
+        <field name="code">BASIC</field>
+    </record>
+    <record id="hr_payroll_head_gross" model="hr.salary.rule.category">
+        <field name="name">Gross</field>
+        <field name="code">GROSS</field>
+    </record>
+    <record id="hr_payroll_head_sio" model="hr.salary.rule.category">
+        <field name="name">Deduction</field>
+        <field name="code">SINS</field>
+        <field name="parent_id" ref="hr_payroll.DED"/>
+    </record>  
+    <record id="hr_payroll_head_tax" model="hr.salary.rule.category">
+        <field name="name">Tax</field>
+        <field name="code">TAX</field>
+        <field name="parent_id" ref="hr_payroll.DED"/>
+    </record>
+    <record id="hr_payroll_head_net" model="hr.salary.rule.category">
+        <field name="name">Net</field>
+        <field name="code">NET</field>
+    </record> 
+
+<!-- HR SALARY RULES-->
+    <record id="hr_payroll_rules_employee" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll_head_salary"/> 
+        <field name="name">基本給</field>
+        <field name="code">SALARY</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">result = contract.wage * 1</field>
+        <field name="appears_on_payslip" eval="True"/>
+    </record>
+　　　<record id="hr_payroll_rules_ota" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll.ALW"/> 
+        <field name="name">時間外手当</field>
+        <field name="code">OTA</field>
+        <field name="sequence">21</field>
+        <field name="appears_on_payslip" eval="True"/>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">result = contract.overtime_allowance</field>
+   </record>
+   <record id="hr_payroll_rules_ca" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll.ALW"/> 
+        <field name="name">通勤手当</field>
+        <field name="code">CA</field>
+        <field name="sequence">22</field>
+        <field name="appears_on_payslip" eval="True"/>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">result = contract.commuting_allowance</field>
+   </record>
+   <record id="hr_payroll_rules_gross" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll_head_gross"/> 
+        <field name="name">総支給額</field>
+        <field name="code">GROSS</field>
+        <field name="sequence">31</field>
+        <field name="appears_on_payslip" eval="True"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">result = contract.wage + categories.ALW</field>
+        <field name="appears_on_payslip" eval="True"/>
+    </record>
+   <record id="hr_payroll_rules_hi_emp" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll_head_sio"/> 
+        <field name="name">健康保険料</field>
+        <field name="code">HINSE</field>
+        <field name="sequence">41</field>
+        <field name="appears_on_payslip" eval="True"/>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">result = -contract.health_insurance*0.5</field>
+        <field name="register_id" ref="contrib_register_sio_h"/>
+   </record>
+
+   <record id="hr_payroll_rules_hi_corp" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll_head_sio"/> 
+        <field name="name">健康保険料（会社負担分）</field>
+        <field name="code">HINSC</field>
+        <field name="sequence">42</field>
+        <field name="appears_on_payslip" eval="False"/>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">result = -contract.health_insurance*0.5</field>
+        <field name="register_id" ref="contrib_register_sio_h"/>
+   </record>
+   <record id="hr_payroll_rules_ni_emp" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll_head_sio"/> 
+        <field name="name">介護保険料</field>
+        <field name="code">NINSE</field>
+        <field name="sequence">43</field>
+        <field name="appears_on_payslip" eval="True"/>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">result = -contract.nursing_insurance*0.5</field>
+        <field name="register_id" ref="contrib_register_sio_n"/>
+   </record>
+   <record id="hr_payroll_rules_ni_corp" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll_head_sio"/> 
+        <field name="name">介護保険料（会社負担分）</field>
+        <field name="code">NINSC</field>
+        <field name="sequence">44</field>
+        <field name="appears_on_payslip" eval="False"/>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">result = -contract.nursing_insurance*0.5</field>
+        <field name="register_id" ref="contrib_register_sio_n"/>
+   </record>
+   <record id="hr_payroll_rules_ep_emp" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll_head_sio"/> 
+        <field name="name">厚生年金保険料</field>
+        <field name="code">EPE</field>
+        <field name="sequence">45</field>
+        <field name="appears_on_payslip" eval="True"/>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">result = -contract.employees_pension*0.5</field>
+        <field name="register_id" ref="contrib_register_sio_e"/>
+   </record>
+   <record id="hr_payroll_rules_ep_corp" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll_head_sio"/> 
+        <field name="name">厚生年金保険料（会社負担分）</field>
+        <field name="code">EPC</field>
+        <field name="sequence">46</field>
+        <field name="appears_on_payslip" eval="False"/>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">result = -contract.employees_pension*0.5</field>
+        <field name="register_id" ref="contrib_register_sio_e"/>
+   </record>
+   <record id="hr_payroll_rules_ui_emp" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll_head_sio"/> 
+        <field name="name">雇用保険料</field>
+        <field name="code">UIE</field>
+        <field name="sequence">47</field>
+        <field name="appears_on_payslip" eval="True"/>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">result = -contract.unemployment_insurance_employee</field>
+        <field name="register_id" ref="contrib_register_hw"/>
+   </record>
+   <record id="hr_payroll_rules_ui_corp" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll_head_sio"/> 
+        <field name="name">雇用保険料（会社負担分）</field>
+        <field name="code">UIC</field>
+        <field name="sequence">48</field>
+        <field name="appears_on_payslip" eval="False"/>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">result = -contract.unemployment_insurance_employer</field>
+        <field name="register_id" ref="contrib_register_hw"/>
+   </record>
+   <record id="hr_payroll_rules_lsso" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll_head_sio"/> 
+        <field name="name">労災保険料</field>
+        <field name="code">WCI</field>
+        <field name="sequence">49</field>
+        <field name="appears_on_payslip" eval="False"/>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">result = contract.workmens_compensation_insurance</field>
+        <field name="register_id" ref="contrib_register_lsso"/>
+   </record>
+   <record id="hr_payroll_rules_itax" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll_head_tax"/> 
+        <field name="name">所得税</field>
+        <field name="code">ITX</field>
+        <field name="sequence">51</field>
+        <field name="appears_on_payslip" eval="True"/>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">result = -contract.income_tax</field>
+   </record>
+   <record id="hr_payroll_rules_rtax" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll_head_tax"/> 
+        <field name="name">住民税</field>
+        <field name="code">RTX</field>
+        <field name="sequence">52</field>
+        <field name="appears_on_payslip" eval="True"/>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">result = -contract.resident_tax</field>
+   </record>
+   <record id="hr_payroll_rules_net" model="hr.salary.rule">
+        <field name="category_id" ref="hr_payroll_head_net"/> 
+        <field name="name">差引支給額</field>
+        <field name="code">NET</field>
+        <field name="sequence">61</field>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">result = contract.wage + categories.ALW + categories.DED</field>
+        <field name="appears_on_payslip" eval="True"/>
+    </record>
+<!-- HR SALARY STRUCTURES-->
+   <record id="hr_payroll_salary_structure_employee" model="hr.payroll.structure">
+        <field name="code">JEMP</field>
+        <field name="name">従業員</field>
+        <field eval="[(6, 0, [ref('hr_payroll_rules_employee'),ref('hr_payroll_rules_ota'),ref('hr_payroll_rules_ca'),ref('hr_payroll_rules_gross'),ref('hr_payroll_rules_hi_emp'),ref('hr_payroll_rules_ni_emp'),ref('hr_payroll_rules_ep_emp'),ref('hr_payroll_rules_ui_emp'),ref('hr_payroll_rules_itax'),ref('hr_payroll_rules_rtax'),ref('hr_payroll_rules_net')])]" name="rule_ids"/>
+        <field name="company_id" ref="base.main_company"/>
+        <field name="parent_id" ref=""/>    
+    </record>
+</odoo>
